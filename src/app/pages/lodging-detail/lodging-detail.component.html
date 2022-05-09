@@ -1,0 +1,78 @@
+<div class="container">
+
+    <section>
+        <div class="useful-width">
+
+            <div class="margin-constraint">
+
+                <div class="lodgingSection">
+
+                    <h1>{{lodging.name}}</h1>
+
+                    <div class="lodging">
+
+                        <!-- <div class="lodgingAprecu">
+                            <div>
+            
+                                <img src="https://www.labresse.net/medias/images/prestations/chalet-lonier-le-couaroge-la-bresse-432752.jpg"
+                                    alt="">
+                            </div>
+                            <p> <span>Annecy, </span> <span> Auvergne-Rhône-Alpe</span> </p>
+                        </div>
+            
+                        <div class="logingDesc">
+            
+                            <span>200€/nuit</span>
+                            <p>Petit châlet cosy au sein
+                                des Alpes. Vous êtes à
+                                deux pas des stations 
+                                Gigot-Crue et
+                                Pouillot-les-Bains. Profitez du
+                                grand air !
+                            </p>
+            
+                        </div> -->
+
+
+
+                        <div class="lodgingAprecu">
+
+                            <p-galleria [value]="images" [responsiveOptions]="responsiveOptions"
+                                [containerStyle]="{'max-width': '660px'}" [numVisible]="5" thumbnailsPosition="bottom">
+
+                                <ng-template pTemplate="item" let-item>
+                                    <img [src]="item.previewImageSrc" style="width: 100%; display: block; border-radius: 10px 10px 0px 0px;" alt="lodging-image-preview" />
+                                </ng-template>
+
+                                <ng-template pTemplate="thumbnail" let-item>
+                                    <div class="grid grid-nogutter justify-content-center"
+                                        style="max-width: 300px; height: auto;">
+                                        <img style="max-width: 100%; height: auto;" class="thumbnailImg"
+                                            [src]="item.thumbnailImageSrc" alt="lodging-images" />
+                                    </div>
+                                </ng-template>
+
+                            </p-galleria>
+
+                            <p> <span> {{lodging.address}} </span> </p>
+
+                        </div>
+
+                        <div class="logingDesc">
+                            <span>{{lodging.rate}}€/nuit</span>
+                            <p>{{lodging.description}}
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <app-reserve-filter></app-reserve-filter>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</div>

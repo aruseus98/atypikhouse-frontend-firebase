@@ -1,0 +1,37 @@
+div.container {
+    div.picsum-img-wrapper-2{
+        position: absolute;
+    }
+    legend {
+        background-color: #000;
+        color: #fff;
+        padding: 3px 6px;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 1160px) {
+    div.container {
+            div.picsum-img-wrapper-2{
+                position: relative;
+            }
+        }
+    }
+
+/*.carousel-control-prev-icon {
+    background-image: url("../../../assets/images/icons/previous-arrow-atypikhouse.svg") !important;
+    width: 35px !important;
+    height: 35px !important;
+    filter: invert(38%) sepia(67%) saturate(1978%) hue-rotate(9deg) brightness(100%) contrast(101%);
+}
+
+.carousel-control-next-icon {
+    background-image: url("../../../assets/images/icons/forward-arrow-atypikhouse.svg") !important;
+    width: 35px !important;
+    height: 35px !important;
+    filter: invert(38%) sepia(67%) saturate(1978%) hue-rotate(9deg) brightness(100%) contrast(101%);
+}
+
+
+}*/

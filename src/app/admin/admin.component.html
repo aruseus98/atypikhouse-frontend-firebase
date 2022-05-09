@@ -1,0 +1,24 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+
+        <!-- En-tête du formulaire-->
+        <mat-card-header>
+            <mat-card-title>Créer une nouvelle catégorie</mat-card-title>
+        </mat-card-header>
+
+        <!-- Début formulaire -->
+        <form (ngSubmit)="submitForm();" class="example-form" [formGroup]="userForm">
+            <mat-card-content>
+                <!-- Input nom avec regex -->
+                <mat-form-field class="example-full-width">
+                    <input matInput name="category" formControlName="category"
+                        placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nouvelle catégorie" pattern="^[a-zA-Zàâéèç.-.' ']*" required>
+                </mat-form-field>
+            </mat-card-content>
+
+            <!-- Bouton désactivé tant que le formulaire n'est pas valide -->
+            <button type="submit" mat-stroked-button color="accent" class="btn-block"
+            [disabled]="!userForm.valid">Créez votre catégorie</button>
+        </form>
+    </mat-card>
+</div>

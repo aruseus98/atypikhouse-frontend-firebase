@@ -1,0 +1,55 @@
+/* Header */
+
+.banner{
+    background: aquamarine;
+}
+
+/* Page contenu */
+
+.section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    text-align: center;
+}
+
+/* Contact form */
+
+label{
+    display:flex;
+    flex-direction:column;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+input{
+    width: 100%;
+    font-size: 16px;
+}
+
+.field {
+    margin-bottom: 1rem;
+}
+
+.textarea {
+    width: 100%;
+}
+
+.button.is-large.is-warning{
+    background: orange;
+    width: 150px;
+    height: 50px;
+    font-size: 2rem;
+}
+
+@media screen and (max-width:760px){
+    div.container-form{
+        box-sizing: border-box;
+        width: 100%;
+        padding: 5px;
+    }
+} 

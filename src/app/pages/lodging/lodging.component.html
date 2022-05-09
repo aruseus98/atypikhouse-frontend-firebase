@@ -1,0 +1,50 @@
+<section>
+    <h2>Nos offres</h2>
+
+    <div class="useful-width">
+
+        <div class="margin-constraint">
+
+            <div class="lodgingSection">
+
+                <div class="lodging" *ngFor="let lodging of lodgings">
+
+                    <div class="lodgingAprecu">
+                        <div>
+
+                            <img src="https://www.labresse.net/medias/images/prestations/chalet-lonier-le-couaroge-la-bresse-432752.jpg"
+                                alt="Offre-1">
+                        </div>
+                        <p> <span>{{ lodging.address }}</span> </p>
+                    </div>
+
+                    <div class="logingDesc">
+
+                        <h3>{{ lodging.name }}</h3>
+                        <span>{{ lodging.rate }}€/nuit</span>
+                        <p>{{ lodging.description }}</p>
+                        <button (click)="goToProductDetails(lodging.id)"> En savoir plus</button>
+                        <!-- <span>{{lodging-detail.id}}</span> -->
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="seeMore">
+
+                <div class="seeMoreContaint">
+                    <h4> Plus d'offres</h4>
+                    <div class="seemMoreImg">
+                        <img src="../../assets/images/icons/arrow_drop_down_circle.svg" alt="">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

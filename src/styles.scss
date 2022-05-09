@@ -1,0 +1,32 @@
+/* Global styles */
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+
+    h1 {
+        font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+        letter-spacing: normal;
+        margin: 0 0 16px;
+    }
+
+    h2 {
+        font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+        letter-spacing: normal;
+        margin: 0 0 16px;
+    }
+
+    p {
+        margin: 0 0 12px;
+    }
+
+    div.page-container {
+        position: relative;
+        min-height: 100%;
+    }
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

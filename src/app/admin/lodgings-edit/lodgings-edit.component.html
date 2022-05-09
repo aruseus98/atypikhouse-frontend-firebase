@@ -1,0 +1,22 @@
+<h1>Editer un logement</h1>
+<!-- Tableau qui affiche toutes les offres -->
+<table mdbTable>
+  <thead class="black white-text">
+    <tr>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Description</th>
+      <th>Prix</th>
+      <th>Editer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol *ngFor="let lodging of lodgings; let index = index">
+      <td>{{ lodging.name }}</td>
+      <td>{{ lodging.address }}</td>
+      <td>{{ lodging.description }}</td>
+      <td>{{ lodging.rate }}€/nuit</td>
+      <td><button (click)="goToProductEdit(lodging.id)"> Modifier</button></td>
+    </tr>
+  </tbody>
+</table>

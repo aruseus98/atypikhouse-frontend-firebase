@@ -1,0 +1,67 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+
+        <mat-card-header>
+            <mat-card-title>
+                <h1>Connexion</h1>
+            </mat-card-title>
+        </mat-card-header>
+
+        <form (ngSubmit)="onSubmit()" class="example-form" [formGroup]="userForm">
+
+            <mat-card-content>
+
+                <!-- Input email avec regex -->
+                <mat-form-field class="example-full-width">
+                    <input matInput id="email" name="email" [(ngModel)]="userForm.value.email"
+                        placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email" formControlName="email"
+                        pattern="^[a-zA-Z0-9_.]+@(?:[a-zA-Z0-9-]+\.)+[a-z]{2,7}$" required>
+                </mat-form-field>
+                <!-- Affiche une erreur si regex non respecté ou champ vide -->
+                <div class="error" *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].value">
+                    L'adresse mail saisie est invalide !
+                </div>
+                <div class="error" *ngIf="!userForm.controls['email'].value && userForm.controls['email'].touched">
+                    Ce champs est requis.
+                </div>
+
+                <!-- Input password avec regex -->
+                <mat-form-field class="example-full-width">
+                    <div class="passwordVisibility">
+
+                        <input name="password" type="password" matInput id="password"
+                            placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mot de passe"
+                            [(ngModel)]="userForm.value.password" formControlName="password"
+                            pattern="^(?=.*[A-Z])(?=.*[\-._~!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$" required>
+                        <span (click)="visibilityPassword()">
+                            <img class="imgVisibility1" src="../../assets/icons/passwordVisibility/visibility.svg"
+                                alt="">
+                        </span>
+
+                    </div>
+                </mat-form-field>
+                <div class="error" *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].value">
+                    Le mot de passe saisie est invalide. <br>
+                    Il vous faut 8 caractères minimum contenant au moins :
+                    <ul>
+                        <li> <b> Une lettre Majuscule</b></li>
+                        <li> <b> Une lettre Minuscule</b></li>
+                        <li> <b> Un caractère spéciale </b></li>
+                        <li> <b> Un chiffre</b></li>
+                    </ul>
+                </div>
+                <div class="error"
+                    *ngIf="userForm.controls['password'].touched && !userForm.controls['password'].value">
+                    Ce champs est requis.
+                </div>
+
+                <p>Pas encore inscrit ? <a class="register" href="/register">Cliquez-ici</a></p>
+
+            </mat-card-content>
+
+            <button type="submit" mat-stroked-button color="accent" class="btn-block"
+                [disabled]="!userForm.valid">Connexion</button>
+
+        </form>
+    </mat-card>
+</div>

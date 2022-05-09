@@ -1,0 +1,169 @@
+
+
+<div class="container" *ngIf="isLoggedIn" >
+	<header class="jumbotron">
+	<h1>Mon compte</h1>
+	  <h2>
+		Bonjour <strong>{{ userObject.username }}</strong> !
+	  </h2>
+	</header>
+  </div>
+
+  <div class="menu-profile">
+  <strong>Roles:</strong>
+  <ul>
+    <li *ngFor="let role of userObject.roles">
+      {{ role }}
+    </li>
+  </ul>
+
+  <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn && showAdminBoard">
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle account_link" href="#" id="navbarDropdown" role="button"
+			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img class="account-icon" src="../../../assets/images/icons/icone-compte-atypikhouse.svg" alt="Logo-mon-compte"/>
+			<span>Hébergement</span>
+		</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item" href="/categorie">Créer une nouvelle catégorie</a>
+			<a class="dropdown-item" href="/hebergement">Réserver</a>
+			<a class="dropdown-item" href="/offre">Déposer une annonce</a>
+			<a class="dropdown-item" href="/editer-logement">Modifier une annonce</a>
+		</div>
+	</li>
+   </ul>
+
+   <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn && showOwnerBoard">
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle account_link" href="#" id="navbarDropdown" role="button"
+			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img class="account-icon" src="../../../assets/images/icons/icone-compte-atypikhouse.svg" alt="Logo-mon-compte"/>
+			<span>Hébergement</span>
+		</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item" href="/hebergement">Réserver</a>
+			<a class="dropdown-item" href="/offre">Déposer une annonce</a>
+		</div>
+	</li>
+   </ul>
+
+   <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn && showUserBoard">
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle account_link" href="#" id="navbarDropdown" role="button"
+			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img class="account-icon" src="../../../assets/images/icons/icone-compte-atypikhouse.svg" alt="Logo-mon-compte"/>
+			<span>Hébergement</span>
+		</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item" href="/hebergement">Réserver</a>
+		</div>
+	</li>
+   </ul>
+	</div>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<mat-card class="box">
+	<!-- En-tête du formulaire-->
+	<mat-card-header>
+		<mat-card-title>Mettre à jour mes informations</mat-card-title>
+	</mat-card-header>
+
+	<!-- Début formulaire -->
+	<form (ngSubmit)="onSubmit()" class="example-form" [formGroup]="userForm">
+		<mat-card-content>
+
+			<!-- Input nom avec regex -->
+			<mat-form-field class="example-full-width">
+				<input matInput name="nom" [(ngModel)]="userForm.value.firstName" formControlName="firstName" pattern="^[a-zA-Zàéèç.-.' ']*" required>
+			</mat-form-field>
+			<!-- Affiche une erreur si regex non respecté ou champ vide -->
+			<div class="error"
+				*ngIf="userForm.controls['firstName'].invalid && userForm.controls['firstName'].value">
+				Le nom saisie est invalide !
+			</div>
+			<div class="error"
+				*ngIf="userForm.controls['firstName'].touched && !userForm.controls['firstName'].value">
+				Ce champs est requis.
+			</div>
+
+			<!-- Input prenom avec regex -->
+			<mat-form-field class="example-full-width">
+				<input matInput name="prenom" [(ngModel)]="userForm.value.lastName" formControlName="lastName" pattern="^[a-zA-Zàéèç.-.' ']*" required>
+			</mat-form-field>
+			<!-- Affiche une erreur si regex non respecté ou champ vide -->
+			<div class="error" *ngIf="userForm.controls['lastName'].invalid && userForm.controls['lastName'].value">
+				Le prénom saisie est invalide !
+			</div>
+			<div class="error"
+				*ngIf="userForm.controls['lastName'].touched && !userForm.controls['lastName'].value">
+				Ce champs est requis.
+			</div>
+
+			<!-- Input email avec regex -->
+			<mat-form-field class="example-full-width">
+				<input matInput id="email" name="email" [(ngModel)]="userForm.value.email" formControlName="email" pattern="^[a-zA-Z0-9_.]+@(?:[a-zA-Z0-9-]+\.)+[a-z]{2,7}$" required>
+			</mat-form-field>
+			<!-- Affiche une erreur si regex non respecté ou champ vide -->
+			<div class="error" *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].value">
+				L'adresse mail saisie est invalide !
+			</div>
+			<div class="error" *ngIf="!userForm.controls['email'].value && userForm.controls['email'].touched">
+				Ce champs est requis.
+			</div>
+
+			<!-- Input password avec regex -->
+			<mat-form-field class="example-full-width">
+				<div class="passwordVisibility">
+
+					<input name="password" type="password" matInput id="password" [(ngModel)]="userForm.value.password" formControlName="password"
+						pattern="^(?=.*[A-Z])(?=.*[\-._~!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$" required>
+					<span (click)="visibilityPassword()">
+						<img class="imgVisibility1" src="../../assets/icons/passwordVisibility/visibility.svg"
+							alt="">
+					</span>
+
+				</div>
+			</mat-form-field>
+			<div class="error" *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].value">
+				Le mot de passe saisie est invalide. <br>
+				Il vous faut 8 caractères minimum contenant au moins :
+				<ul>
+					<li> <b> Une lettre Majuscule</b></li>
+					<li> <b> Une lettre Minuscule</b></li>
+					<li> <b> Un caractère spéciale </b></li>
+					<li> <b> Un chiffre</b></li>
+				</ul>
+			</div>
+			<div class="error"
+				*ngIf="userForm.controls['password'].touched && !userForm.controls['password'].value">
+				Ce champs est requis.
+			</div>
+
+			<mat-form-field class="example-full-width">
+				<div class="passwordVisibility" [formGroup]="repassword">
+
+					<input name="repassword" type="password" matInput [(ngModel)]="repassword.value.samePassword" formControlName="samePassword"
+						pattern="^(?=.*[A-Z])(?=.*[\-._~!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,}$" required>
+					<span (click)="visibilityConfirmPassword()">
+						<img class="imgVisibility2" src="../../assets/icons/passwordVisibility/visibility.svg"
+							alt="">
+					</span>
+
+				</div>
+			</mat-form-field>
+			<!-- Affiche une erreur si regex non respecté ou champ vide et/ou mot de passe non identique -->
+			<div class="error"
+				*ngIf="userForm.controls['password'].value != repassword.controls['samePassword'].value && repassword.controls['samePassword'].touched">
+				Mot de passe non identique.
+			</div>
+			<div class="error" *ngIf="repassword.controls['samePassword'].touched && !repassword.controls['samePassword'].value">
+				Ce champs est requis.
+			</div>
+
+		</mat-card-content>
+
+		<!-- Bouton désactivé tant que le formulaire n'est pas valide -->
+		<button mat-stroked-button color="accent" class="btn-block"
+			[disabled]="!userForm.valid">Mettre à jour</button>
+	</form>
+</mat-card>
+</div>

@@ -1,0 +1,21 @@
+section.banniere{
+    div.rows{
+        text-align: center;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+}
+
+section.cgu{
+    div.cgu-text{
+        box-sizing: border-box;
+        width: 70%;
+        margin: auto;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        text-align: justify;
+        h2{
+            font-size: 2rem;
+        }
+    }
+}

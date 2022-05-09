@@ -1,0 +1,60 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+
+        <!-- En-tête du formulaire-->
+        <!-- Bouton précédent -->
+        <button mat-stroked-button color="accent" class="btn-block" style="width: 30%;" (click)="btnPrec()">Retour</button>
+        <mat-card-header>
+            <mat-card-title><h1>Modifier l'annonce</h1></mat-card-title>
+        </mat-card-header>
+
+        <!-- Début formulaire -->
+        <form (ngSubmit)="submitForm();" class="example-form" [formGroup]="userForm">
+            <mat-card-content>
+
+                <!-- Input nom avec regex -->
+                <mat-form-field class="example-full-width">
+                    <input matInput name="nom" formControlName="name" pattern="^[a-zA-Zàâéèç.-.' ']*" required>
+                </mat-form-field>
+
+                <!-- Input adresse avec regex -->
+                <mat-form-field class="example-full-width">
+                    <input matInput id="address" name="address" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adresse"
+                        formControlName="address" required>
+                </mat-form-field>
+
+
+                <!-- Select category -->
+                <select name="category" matInput id="category" formControlName="category" class="category" required>
+                    <option value="" selected disabled>--Type d'habitation--</option>
+                    <!-- <option  *ngFor="let category of categories" value="/api/categories/{{category.id}}">{{category.type}}</option> -->
+                    <option *ngFor="let category of categories" [selected]="userForm.value.category.type === '/api/categories/{{category.id}}' " value="/api/categories/{{category.id}}">{{category.type}}</option>
+                    <!-- <option [selected]="userForm.value.category.type === '/api/categories/2' " value="/api/categories/2">Yourte</option> -->
+                </select>
+                <!-- Input prix -->
+                <mat-form-field class="example-full-width">
+                    <input type="number" matInput id="rate" name="rate" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix"
+                        formControlName="rate" required>
+                </mat-form-field>
+                <p class="message-contact">Décrivez votre habitation</p>
+                <!-- Input message avec regex -->
+                <mat-form-field class="example-full-width">
+                    <textarea name="message" matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Votre message"
+                        formControlName="description" pattern="^.{50,255}$" required></textarea>
+                </mat-form-field>
+                <!-- Affiche une erreur si regex non respecté ou champ vide -->
+                <div class="error"
+                    *ngIf="userForm.controls['description'].invalid && userForm.controls['description'].value">
+                    Le message saisie est trop court et/ou trop long. Il doit contenir entre 50 et 255 caractères.
+                </div>
+                <div class="error"
+                    *ngIf="!userForm.controls['description'].value && userForm.controls['description'].touched">
+                    Ce champs est requis.
+                </div>
+            </mat-card-content>
+
+            <!-- Bouton désactivé tant que le formulaire n'est pas valide -->
+            <button mat-stroked-button color="accent" class="btn-block" [disabled]="!userForm.valid">Modifier mon annonce</button>
+        </form>
+    </mat-card>
+</div>

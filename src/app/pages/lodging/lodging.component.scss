@@ -1,0 +1,228 @@
+section {
+    padding: 64px 0;
+
+    h2 {
+        font-size: 24px;
+        color: #325F5C;
+        -webkit-text-decoration: underline #ff994b;
+        text-decoration: underline #ff994b;
+        margin-block-end: 3px;
+        text-align: center;
+    }
+
+    div.useful-width {
+        display: block;
+        width: auto;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+
+        div.margin-constraint {
+            margin-left: 20px;
+            margin-right: 20px;
+
+            div.lodgingSection {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 20px;
+                column-gap: 20px;
+                grid-row-gap: 20px;
+                row-gap: 20px;
+
+                div.lodging {
+                    display: flex;
+                    padding: 10px;
+                    width: 100%;
+                    border-radius: 15px;
+
+                    div.lodgingAprecu {
+                        width: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        div {
+                            img {
+                                border-radius: 10px;
+                                width: 100%;
+                            }
+                        }
+
+                        p {
+                            text-align: center;
+                            color: #000000;
+                            line-height: 25px;
+                            margin: 0;
+                            font-weight: 400;
+                            font-size: 16px;
+                            margin-top: 10px;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                    }
+
+                    div.logingDesc {
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 15px;
+
+                        h3 {
+                            text-align: right;
+                            margin: 0;
+                            color: #2c2c51;
+                            font-size: 20px;
+                        }
+
+                        span {
+                            text-align: right;
+                            font-size: 16px;
+                            margin-bottom: 10px;
+                            color: #325F5C;
+                        }
+
+                        p {
+                            text-align: right;
+                            color: #000000;
+                            line-height: 25px;
+                            margin: 0;
+                            font-weight: 400;
+                            font-size: 16px;
+                            margin-bottom: 10px;
+                            // too set a max caracter length and "..." at the end
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 4;
+                            -webkit-box-orient: vertical;
+                            max-width: 200px;
+                        }
+
+
+
+                        button {
+                            color: white;
+                            //background: rgb(220, 152, 24);
+                            background: linear-gradient(90.69deg, #ED6700 0%, #FF994B 99.84%);
+                            border: 2px solid #FFFFFF;
+                            box-sizing: border-box;
+                            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                            border-radius: 10px;
+                            cursor: pointer;
+                            padding: 5px;
+                            width: 80%;
+                            margin: auto;
+                            opacity: 0.7;
+                            transition: 0.5s;
+                        }
+
+                        button:hover {
+                            background: linear-gradient(90.69deg, #FF994B 0%, #ED6700 99.84%);
+                            opacity: 1;
+                        }
+
+
+                    }
+                }
+
+                div.lodging:hover {
+                    box-shadow: 0px 50px 100px 0px rgb(20 9 0 / 22%), 0px -5px 0px 0px rgb(95 84 253 / 0%);
+                }
+            }
+
+            div.seeMore {
+                display: flex;
+                justify-content: center;
+                padding-bottom: 30px;
+                padding-top: 15px;
+
+                div.seeMoreContaint {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    cursor: pointer;
+                    padding: 15px;
+
+                    h4 {
+                        font-size: 24px;
+                        color: #325F5C;
+                        text-decoration: underline #ff994b;
+                        margin-block-end: 3px;
+                    }
+
+                    div.seemMoreImg {
+                        img {
+                            filter: invert(73%) sepia(38%) saturate(1800%) hue-rotate(324deg) brightness(102%) contrast(102%);
+                        }
+                    }
+                }
+
+                div.seeMoreContaint:hover {
+                    padding: 15px;
+                    box-shadow: 0px 50px 100px 0px rgb(20 9 0 / 22%), 0px -5px 0px 0px rgb(255 153 75 / 63%);
+                    border-radius: 15px;
+                }
+            }
+
+
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+
+    section {
+
+        div.useful-width {
+
+            div.margin-constraint {
+
+                div.lodgingSection {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-column-gap: 20px;
+                    column-gap: 20px;
+                    grid-row-gap: 20px;
+                    row-gap: 20px;
+
+                    div.lodging {
+                        display: flex;
+                        padding: 10px;
+                        width: 100%;
+
+                        div.lodgingAprecu {
+
+                            p {
+                                display: block;
+                            }
+                        }
+
+                        div.logingDesc {
+
+                            h3 {
+                                text-align: left;
+                                margin: 0;
+                                color: #2c2c51;
+                                font-size: 20px;
+                            }
+
+                            span {
+                                text-align: left;
+                                font-size: 16px;
+                                color: #ED6700;
+                                margin-bottom: 0;
+                            }
+
+                            p {
+                                text-align: left;
+                            }
+
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+}
