@@ -105,12 +105,12 @@
 
                 <!-- Input question avec regex -->
                 <mat-form-field class="example-full-width">
-                    <input matInput name="question" [(ngModel)]="userForm.value.question" formControlName="question"
-                        placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Un panda est de couleur noir et..." pattern="^[blanc]*" required>
+                    <input matInput id="question" name="question" [(ngModel)]="userForm.value.question" formControlName="question"
+                        placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Un panda est de couleur noir et..." pattern="\b([Bb]lanc)\b" required>
                 </mat-form-field>
                 <!-- Affiche une erreur si réponse vide ou incorrect -->
                 <div class="error" *ngIf="userForm.controls['question'].invalid && userForm.controls['question'].value">
-                    La réponse saisie est invalide !
+                    La réponse saisie est invalide ! Veillez saisir que des Minuscules ou simplement la première lettre en Majuscule
                 </div>
                 <div class="error"
                     *ngIf="userForm.controls['question'].touched && !userForm.controls['question'].value">
@@ -123,7 +123,7 @@
             </form>
 
             <!-- Bouton désactivé tant que le formulaire n'est pas valide donc inscription impossible -->
-            <button type="submit" mat-stroked-button color="accent" class="btn-block"
+            <button mat-stroked-button color="accent" class="btn-block"
                 [disabled]="!userForm.valid">Inscription</button>
         </form>
     </mat-card>
