@@ -72,27 +72,31 @@ export class RegisterComponent implements OnInit {
 
 	//Redirection sur page inscription success
 	onSubmit() {
-		const { email, password, firstName, lastName, photo } = this.userForm.value
-		console.log(email, password, firstName, lastName, photo);
+		const { email, password, firstName, lastName, photo, question } = this.userForm.value
+		console.log(email, password, firstName, lastName, photo, question);
 
-		this.authService.register(email, password, firstName, lastName, photo)
-			.subscribe(data => {
+		if(question === "blanc" || question === "Blanc" ) {
+			this.authService.register(email, password, firstName, lastName, photo)
+				.subscribe(data => {
 
-				if (data.firstName) {
+					if (data.firstName) {
 
-					console.log("gg --------->");
-					console.log(data);
-					this.isSuccessful = true;
-					this.isSignUpFailed = false;
-				}
-			},
-				err => {
-					this.errorMessage = err.error.message;
-					this.isSignUpFailed = true;
-				}
-			);
-		window.alert("Compte créé avec succès !")
-		this.router.navigate(['/']);
+						console.log("gg ---------->");
+						console.log(data);
+						this.isSuccessful = true;
+						this.isSignUpFailed = false;
+					}
+				},
+					err => {
+						this.errorMessage = err.error.message;
+						this.isSignUpFailed = true;
+					}
+				);
+			window.alert("Compte créé avec succès !");
+			this.router.navigate(['/']);
+		} else {
+			window.alert("Veillez saisir le bon mot pour la question du panda");
+		}
 	}
 
 	visibilityPassword() {
