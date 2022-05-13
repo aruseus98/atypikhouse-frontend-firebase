@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { User } from '../shared/models/user.model';
 
-const API_URL = 'https://radiant-reaches-08673.herokuapp.com/api';
+const API_URL = 'https://radiant-reaches-08673.herokuapp.com/api/';
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -22,15 +22,15 @@ export class UserService {
 	constructor(private http: HttpClient) { }
 
 	getUserBoard(): Observable<any> {
-		return this.http.get(API_URL + '/users/me', { responseType: 'json' });
+		return this.http.get(API_URL + 'users/me', { responseType: 'json' });
 	}
 
 	getModeratorBoard(): Observable<any> {
-		return this.http.get(API_URL + '/users/me', { responseType: 'text' });
+		return this.http.get(API_URL + 'users/me', { responseType: 'text' });
 	}
 
 	getAdminBoard(): Observable<any> {
-		return this.http.get(API_URL + '/users/me', { responseType: 'text' });
+		return this.http.get(API_URL + 'users/me', { responseType: 'text' });
 	}
 
 	patchUserInfo(id:number, email:string, password:string, firstName:string, lastName:string): Observable<any> {
@@ -43,11 +43,11 @@ export class UserService {
 	}
 
 	getUserInfo(id:number): Observable<any> {
-		return this.http.get(API_URL + '/users/' + id, { responseType: 'json' })
+		return this.http.get(API_URL + 'users/' + id, { responseType: 'json' })
 	}
 
 	getAllUsers(): Observable<any> {
-		return this.http.get(API_URL + '/users', { responseType: 'json' })
+		return this.http.get(API_URL + 'users', { responseType: 'json' })
 	}
 	
 	// getUser(id: number): Observable<any>{

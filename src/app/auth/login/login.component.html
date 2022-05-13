@@ -1,3 +1,5 @@
+<div class="espace-vide"></div>
+
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
 
@@ -15,7 +17,7 @@
                 <mat-form-field class="example-full-width">
                     <input matInput id="email" name="email" [(ngModel)]="userForm.value.email"
                         placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email" formControlName="email"
-                        pattern="^[a-zA-Z0-9_.]+@(?:[a-zA-Z0-9-]+\.)+[a-z]{2,7}$" required>
+                        pattern="^[a-zA-Z0-9_\-.]+@(?:[a-zA-Z0-9-]+\.)+[a-z]{2,7}$" required>
                 </mat-form-field>
                 <!-- Affiche une erreur si regex non respecté ou champ vide -->
                 <div class="error" *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].value">
@@ -65,3 +67,5 @@
         </form>
     </mat-card>
 </div>
+
+<div class="espace-vide"></div>

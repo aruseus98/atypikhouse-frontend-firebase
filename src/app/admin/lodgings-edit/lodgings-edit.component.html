@@ -12,11 +12,13 @@
   </thead>
   <tbody>
     <tr mdbTableCol *ngFor="let lodging of lodgings; let index = index">
-      <td>{{ lodging.name }}</td>
-      <td>{{ lodging.address }}</td>
-      <td>{{ lodging.description }}</td>
-      <td>{{ lodging.rate }}€/nuit</td>
+      <td data-label="Nom"><strong>{{ lodging.name }}</strong></td>
+      <td data-label="Adresse">{{ lodging.address }}</td>
+      <td data-label="Description">{{ lodging.description }}</td>
+      <td data-label="Prix">{{ lodging.rate }}€/nuit</td>
       <td><button (click)="goToProductEdit(lodging.id)"> Modifier</button></td>
     </tr>
   </tbody>
 </table>
+
+<div class="espace-vide"></div>

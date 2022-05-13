@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
 	isSuccessful = false;
 	isSignUpFailed = false;
 	errorMessage = '';
+	answer !: string;
 
 	//Initialisation des variables associé au register form pour pouvoir contrôler les champs associés
 	userForm: FormGroup;
@@ -30,7 +31,6 @@ export class RegisterComponent implements OnInit {
 
 	private _shown = false;
 
-	Roles: any = ['Propriétaire/Locataire', 'Propriétaire', 'Locataire'];
 	constructor(private formBuilder: FormBuilder, private router: Router,
 		private el: ElementRef, private authService: AuthService, private metaService: Meta, private titleService: Title) {
 
@@ -40,6 +40,7 @@ export class RegisterComponent implements OnInit {
 				firstName: ['', [Validators.required]],
 				email: ['', [Validators.required]],
 				password: ['', [Validators.required]],
+				question: ['', [Validators.required]],
 				photoUrl: ['']
 			}
 		)
@@ -62,6 +63,8 @@ export class RegisterComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		// Question de vérification si robot
+
 		this.frmFinish = this.formBuilder.group({
 			checkTerms: ['', Validators.requiredTrue],
 		});
