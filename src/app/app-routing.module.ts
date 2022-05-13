@@ -19,6 +19,9 @@ import { OffreComponent } from './auth/offre/offre.component';
 import { AdminComponent } from './admin/admin.component';
 import { LodgingsEditComponent } from './admin/lodgings-edit/lodgings-edit.component';
 import { FormsEditLodgingsComponent } from './admin/forms-edit-lodgings/forms-edit-lodgings.component';
+import { AuthGuard } from './_services/guards/auth.guard';
+import { RolesGuard } from './_services/guards/roles.guard';
+import { EditerAuthGuard } from './_services/guards/editer-auth.guard';
 
 
 const routes: Routes = [
@@ -34,13 +37,13 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   // { path: 'lodgings', component: LodgingComponent },
   { path: 'lodging-detail/:id', component: LodgingDetailComponent },
-  { path: 'mon-compte', component: UserProfileComponent },
-  { path: 'paiement', component: CheckoutStripeSandboxComponent },
+  { path: 'mon-compte', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'paiement', component: CheckoutStripeSandboxComponent, canActivate: [AuthGuard] },
   { path: 'hebergement', component: HebergementComponent },
-  { path: 'offre', component: OffreComponent },
-  { path: 'categorie', component: AdminComponent},
-  { path: 'editer-logement', component: LodgingsEditComponent},
-  { path: 'editer-annonce/:id', component: FormsEditLodgingsComponent },
+  { path: 'offre', component: OffreComponent, canActivate: [AuthGuard] },
+  { path: 'categorie', component: AdminComponent, canActivate: [RolesGuard] },
+  { path: 'editer-logement', component: LodgingsEditComponent, canActivate: [EditerAuthGuard] },
+  { path: 'editer-annonce/:id', component: FormsEditLodgingsComponent, canActivate: [EditerAuthGuard] },
 
   // Re route lien qui n'existe pas sur page 404
   { path: '**', pathMatch: 'full', component: PagenotfoundComponent },

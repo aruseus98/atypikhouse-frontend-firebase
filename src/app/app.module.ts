@@ -57,6 +57,7 @@ import { OffreComponent } from './auth/offre/offre.component';
 import { AdminComponent } from './admin/admin.component';
 import { LodgingsEditComponent } from './admin/lodgings-edit/lodgings-edit.component';
 import { FormsEditLodgingsComponent } from './admin/forms-edit-lodgings/forms-edit-lodgings.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
 	declarations: [
@@ -110,6 +111,7 @@ import { FormsEditLodgingsComponent } from './admin/forms-edit-lodgings/forms-ed
 		ReservationService,
 		SearchLodgingService,
 		authInterceptorProviders,
+		JwtHelperService, { provide: JWT_OPTIONS, useValue : JWT_OPTIONS },
 		Meta,
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 		{ provide: RECAPTCHA_SETTINGS, useValue: { siteKey: "6Ld6ersfAAAAAOM1Ve_JGLIShKFi2lhnqZ44h0Wv" } as RecaptchaSettings },
