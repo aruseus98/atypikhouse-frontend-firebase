@@ -122,7 +122,7 @@
                 <mat-checkbox required formControlName="checkTerms">Je confirme avoir lu et accepté les conditions générales d'utilisation (<a class="a-lien" href="/conditions-generales-utilisation/" target="blank">les conditions générales d'utilisation</a>)</mat-checkbox>
             </form>
 
-            <!-- Bouton désactivé tant que le formulaire n'est pas valide -->
+            <!-- Bouton désactivé tant que le formulaire n'est pas valide donc inscription impossible -->
             <button type="submit" mat-stroked-button color="accent" class="btn-block"
                 [disabled]="!userForm.valid">Inscription</button>
         </form>
